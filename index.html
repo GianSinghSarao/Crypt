@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Crypt Documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+      ::selection {
+        background: rgba(255, 255, 255, 0.25);
+      }
+      body {
+        width: 120em;
+        max-width: calc(100% - 2em);
+        position: relative;
+        background: rgb(32, 32, 32);
+        margin: 0;
+        padding: 1em;
+        font-family: monospace;
+        font-style: normal;
+        font-weight: lighter;
+        color: #fff;
+      }
+      body > pre.prettyprint.lang-html.prettyprinted, #source {
+        overflow: auto;
+        max-width: calc(100% - 2em);
+        white-space: pre;
+      }
+    </style>
+    <script src="crypt.min.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        var a = new XMLHttpRequest();
+        a.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+          document.querySelector('#source').innerHTML = this.responseText;
+          }
+        }; 
+        a.open('GET', 'crypt.js', true);
+        a.send();
+      });
+    </script>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=sunburst"></script>
+  </head>
+  <body>
+    <h1>Crypt</h1>
+    <h2>A Simple Script That Quickly Encrypts Text Into An Unreadable Incoherent String Of Chars And Back Again.</h2>
+    <aside>
+      Originally Made For The String Encrypter V2
+    </aside>
+    <aside>
+      <h3>Disclaimer:</h3>
+      <p><i>crypt</i>, Despite its Name, Is Not Secure. It Is Not To Be Used In Any Place Where Any Form Of Sensitive Data Is Being Transferred Or Stored. It Is Easy To Break And Can Be Broken Quickly Using A Simple Brute-Force Attack.</p>
+    </aside>
+    <h3>Usage:</h3>
+    <p>Include the following in the head of your page's html code to use the publically hosted version. This will export a single function to the global scope of the window called <i>crypt</i>. It has no parameter validation, but to function correctly it must be called with the string to be encrypted, and the cipher text. It's output is rarely printable characters so it should be encoded in base64 or stored as a buffer.</p>
+    <pre class="prettyprint lang-html">&lt;script src="https://giansinghsarao.github.io/crypt/crypt.min.js"&gt;&lt;/script&gt;</pre>
+    <hr>
+    <p>The Unminified script is shown below.</p>
+    <pre class="prettyprint linenums lang-js" id="source"></pre>
+  </body>
+</html>
